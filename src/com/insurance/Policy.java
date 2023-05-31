@@ -2,14 +2,18 @@ package com.insurance;
 
 public class Policy {
 
-	int policyNumber; // Policy Number
-	String providerName; // Provider Name
-	String holderFirstName; // policy holder's First Name
-	String holderLastName;// Policy Holder's Last Name
-	int holderAge;
-	String holderSmokingStatus;// true or false
-	int holderHeight; // inches
-	int holderWeight; // lbs
+	// Added ncode to Policy Class
+	private String providerName; // Provider Name
+	private String holderFirstName; // policy holder's First Name
+	private String holderLastName;// Policy Holder's Last Name
+
+	
+	private int holderAge;
+	private int holderHeight; // inches
+	private int holderWeight; // lbs
+	private int policyNumber; // Policy Number
+	private boolean holderSmokingStatus;
+
 
 	public Policy() {
 		this.policyNumber = 0;
@@ -17,7 +21,7 @@ public class Policy {
 		this.holderFirstName = "";
 		this.holderLastName = "";
 		this.holderAge = 0;
-		this.holderSmokingStatus = "";
+		this.holderSmokingStatus = false;
 		this.holderHeight = 0;
 		this.holderWeight = 0;
 
@@ -29,7 +33,7 @@ public class Policy {
 			String holderFirstName,
 			String holderLastName,
 			int holderAge,
-			String holderSmokingStatus,
+			boolean holderSmokingStatus,
 			int holderHeight,
 			int holderWeight) {
 		super();
@@ -41,6 +45,7 @@ public class Policy {
 		this.holderSmokingStatus = holderSmokingStatus;
 		this.holderHeight = holderHeight;
 		this.holderWeight = holderWeight;
+
 	}
 
 	public int bmiCalc(int holderWeight, int holderHeight) {
@@ -48,88 +53,73 @@ public class Policy {
 		return (holderWeight * 703) / (holderHeight * holderHeight);
 	}
 
-	public int getPolicyNumber() {
-		return policyNumber;
-	}
-
-	public void setPolicyNumber(int policyNumber) {
-		this.policyNumber = policyNumber;
-	}
-
-	public String getProviderName() {
-		return providerName;
-	}
-
-	public void setProviderName(String providerName) {
-		this.providerName = providerName.toUpperCase();
+	public int getHolderAge() {
+		return holderAge;
 	}
 
 	public String getHolderFirstName() {
 		return holderFirstName;
 	}
 
-	public void setHolderFirstName(String holderFirstName) {
-		this.holderFirstName = holderFirstName.toUpperCase();
+	public int getHolderHeight() {
+		return holderHeight;
 	}
 
 	public String getHolderLastName() {
 		return holderLastName;
 	}
 
-	public void setHolderLastName(String holderLastName) {
-		this.holderLastName = holderLastName.toUpperCase();
-	}
-
-	public int getHolderAge() {
-		return holderAge;
-	}
-
-	public void setHolderAge(int holderAge) {
-		this.holderAge = holderAge;
-	}
-
-	public String getHolderSmokingStatus() {
+	public boolean getHolderSmokingStatus() {
 		return holderSmokingStatus;
-	}
-
-	public void setHolderSmokingStatus(String holderSmokingStatus) {
-		this.holderSmokingStatus = holderSmokingStatus.toUpperCase();
-	}
-
-	public int getHolderHeight() {
-		return holderHeight;
-	}
-
-	public void setHolderHeight(int holderHeight) {
-		this.holderHeight = holderHeight;
 	}
 
 	public int getHolderWeight() {
 		return holderWeight;
 	}
 
+	public int getPolicyNumber() {
+		return policyNumber;
+	}
+
+	
+	public void setHolderAge(int holderAge) {
+		this.holderAge = holderAge;
+	}
+
+	public void setHolderFirstName(String holderFirstName) {
+		this.holderFirstName = holderFirstName.toUpperCase();
+	}
+
+	public void setHolderHeight(int holderHeight) {
+		this.holderHeight = holderHeight;
+	}
+
+	public void setHolderLastName(String holderLastName) {
+		this.holderLastName = holderLastName.toUpperCase();
+	}
+
+	public void setHolderSmokingStatus(boolean holderSmokingStatus) {
+		this.holderSmokingStatus = holderSmokingStatus;
+	}
+
 	public void setHolderWeight(int holderWeight) {
 		this.holderWeight = holderWeight;
 	}
 
-	public double policyPriceCalc(int holderAge, int holderWeight, int holderHeight,
-			String holderSmokingStatus) {
-
-		double policyPrice = 600.00;
-
-		if (this.holderAge > 50) {
-			policyPrice += 75.00;
-		}
-
-		if (this.holderSmokingStatus.matches("smoker")) {
-			policyPrice += 100;
-		}
-
-		if (bmiCalc(this.holderWeight, this.holderHeight) > 35) {
-			policyPrice += (bmiCalc(this.holderWeight, this.holderHeight) - 35) * 20;
-		}
-		return policyPrice;
+	public void setPolicyNumber(int policyNumber) {
+		this.policyNumber = policyNumber;
 	}
+
+	public void setProviderName(String providerName) {
+		this.providerName = providerName.toUpperCase();
+	}
+
+
+	public String getProviderName() {
+		return providerName;
+	}
+
+
 
 }
 
