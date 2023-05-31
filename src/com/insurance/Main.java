@@ -12,6 +12,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //asdasdasdasdasdasd
+		//scott
+		
 		Policy policy01 = new Policy();
 
 		Scanner scanner = new Scanner(System.in);
