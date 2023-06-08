@@ -5,8 +5,21 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author SCOTT MICHAEL ANDERSON
+ *
+ *         The program gets input from the user for his/hers insurance policy
+ *         information
+ *
+ *         The users policy object with fields is output The BMI is calculated
+ *         and is output The Policy Price is output
+ *
+ */
 public class Main {
 
+	/**
+	 * Formats the output of decimal variables
+	 */
 	public static DecimalFormat f = new DecimalFormat("##.00");
 
 	public static void main(String[] args) {
@@ -39,6 +52,13 @@ public class Main {
 
 	}
 
+	/**
+	 * getInput() method will get user input for the Policy object
+	 * 
+	 * @param policy01 instance of the Policy Class
+	 * @param scanner
+	 * @return Returns the new Policy object/instance
+	 */
 	public static Policy getInput(Policy policy01, Scanner scanner) {
 
 		boolean scottBoolean = false;
@@ -88,6 +108,14 @@ public class Main {
 		return policy01;
 	}
 
+	/**
+	 * validate() method will compare the String input for smokingStatusStr and
+	 * return a boolean value for the smoking status
+	 * 
+	 * @param policy01
+	 * @param smokingStatusStr
+	 * @return boolean value for smoking status
+	 */
 	public static boolean validate(Policy policy01, String smokingStatusStr) {
 
 		boolean scottBoolean = false;
@@ -112,6 +140,13 @@ public class Main {
 		return scottBoolean;
 	}
 
+	/**
+	 * policyPriceCalc() method will return the policy price after considering the
+	 * age, smoking status, and BMI
+	 * 
+	 * @param policy01
+	 * @return returns the Policy Price
+	 */
 	public static double policyPriceCalc(Policy policy01) {
 
 		double policyPrice = 600.00;
