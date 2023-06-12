@@ -17,10 +17,10 @@ public class Policy {
 	private String holderFirstName; // policy holder's First Name
 	private String holderLastName;// Policy Holder's Last Name
 	private int holderAge;
-	private int holderHeight; // inches
-	private int holderWeight; // lbs
+	private double holderHeight; // inches
+	private double holderWeight; // lbs
 	private int policyNumber; // Policy Number
-	private boolean holderSmokingStatus;
+	private String holderSmokingStatus;
 
 	/**
 	 * Default Policy constructor that initializes the fields with default values
@@ -33,9 +33,9 @@ public class Policy {
 		this.holderFirstName = "";
 		this.holderLastName = "";
 		this.holderAge = 0;
-		this.holderSmokingStatus = false;
-		this.holderHeight = 0;
-		this.holderWeight = 0;
+		this.holderSmokingStatus = "";
+		this.holderHeight = 00.00d;
+		this.holderWeight = 00.00d;
 
 	}
 
@@ -58,9 +58,9 @@ public class Policy {
 			String holderFirstName,
 			String holderLastName,
 			int holderAge,
-			boolean holderSmokingStatus,
-			int holderHeight,
-			int holderWeight) {
+			String holderSmokingStatus,
+			double holderHeight,
+			double holderWeight) {
 		super();
 		this.policyNumber = policyNumber;
 		this.providerName = providerName;
@@ -78,7 +78,7 @@ public class Policy {
 	 * 
 	 * @return the body mass index
 	 */
-	public int bmiCalc(int holderWeight, int holderHeight) {
+	public double bmiCalc(double holderWeight, double holderHeight) {
 
 		return (holderWeight * 703) / (holderHeight * holderHeight);
 	}
@@ -107,7 +107,7 @@ public class Policy {
 	 * 
 	 * @return height of policy holder
 	 */
-	public int getHolderHeight() {
+	public double getHolderHeight() {
 		return holderHeight;
 	}
 
@@ -125,7 +125,7 @@ public class Policy {
 	 * 
 	 * @return smoking status of policy holder
 	 */
-	public boolean getHolderSmokingStatus() {
+	public String getHolderSmokingStatus() {
 		return holderSmokingStatus;
 	}
 
@@ -134,7 +134,7 @@ public class Policy {
 	 * 
 	 * @return weight of policy holder
 	 */
-	public int getHolderWeight() {
+	public double getHolderWeight() {
 		return holderWeight;
 	}
 
@@ -179,7 +179,7 @@ public class Policy {
 	 * 
 	 * @param holderHeight height of policy holder in inches
 	 */
-	public void setHolderHeight(int holderHeight) {
+	public void setHolderHeight(double holderHeight) {
 		this.holderHeight = holderHeight;
 	}
 
@@ -197,7 +197,7 @@ public class Policy {
 	 * 
 	 * @param holderSmokingStatus policy holders smoking status
 	 */
-	public void setHolderSmokingStatus(boolean holderSmokingStatus) {
+	public void setHolderSmokingStatus(String holderSmokingStatus) {
 		this.holderSmokingStatus = holderSmokingStatus;
 	}
 
@@ -206,7 +206,7 @@ public class Policy {
 	 * 
 	 * @param holderWeight weight of policy holder in lbs
 	 */
-	public void setHolderWeight(int holderWeight) {
+	public void setHolderWeight(double holderWeight) {
 		this.holderWeight = holderWeight;
 	}
 
