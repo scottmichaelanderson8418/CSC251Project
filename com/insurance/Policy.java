@@ -17,9 +17,6 @@ public class Policy {
 
 	private int policyNumber; // Policy Number
 
-	private PolicyHolder policyHolderObj; // Field to represent an instance of the PolicyHolder
-											// class
-
 	/**
 	 * Default Policy constructor that initializes the fields with default values
 	 * 
@@ -28,7 +25,6 @@ public class Policy {
 	public Policy() {
 		this.policyNumber = 0;
 		this.providerName = "";
-		this.policyHolderObj = null;
 
 	}
 
@@ -45,11 +41,10 @@ public class Policy {
 	 * @param holderSmokingStatus: indicates the policy holders smoking status
 	 */
 	// Policy constructor with fields
-	public Policy(int policyNumber, String providerName, PolicyHolder policyHolderObj) {
+	public Policy(int policyNumber, String providerName) {
 		super();
 		this.policyNumber = policyNumber;
 		this.providerName = providerName;
-		this.policyHolderObj = new PolicyHolder(policyHolderObj);
 
 	}
 
@@ -61,11 +56,6 @@ public class Policy {
 	public double bmiCalc(double holderWeight, double holderHeight) {
 
 		return (holderWeight * 703) / (holderHeight * holderHeight);
-	}
-
-	// this will return a copy of my PolicyHolder Object
-	public PolicyHolder getPolicyHolderObj() {
-		return this.policyHolderObj;
 	}
 
 	/**
@@ -86,13 +76,6 @@ public class Policy {
 		return providerName;
 	}
 
-	public void setPolicyHolderObj(PolicyHolder policyHolderObj) {
-
-		this.policyHolderObj = new PolicyHolder(policyHolderObj);
-	}
-	
-	
-
 	/**
 	 * Sets the policy number of the insurance plan
 	 * 
@@ -109,21 +92,6 @@ public class Policy {
 	 */
 	public void setProviderName(String providerName) {
 		this.providerName = providerName.toUpperCase();
-	}
-
-	// @Override
-	// public String toString() {
-	// return "Policy [providerName=" + providerName + ", policyNumber=" +
-	// policyNumber +
-	// ", policyHolderObj=" + policyHolderObj + "]";
-	// }
-	//
-
-	public String toString() {
-
-		return "this.policyNumber = " + this.policyNumber + "this.providerName = " +
-				this.providerName + "this.policyHolderObj = " + this.policyHolderObj;
-
 	}
 
 }

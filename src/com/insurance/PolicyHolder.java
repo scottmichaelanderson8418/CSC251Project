@@ -9,6 +9,17 @@ public class PolicyHolder {
 	private double holderWeight; // lbs
 	private String holderSmokingStatus;
 
+	public PolicyHolder(PolicyHolder policyHolderObj) {
+		holderFirstName = policyHolderObj.holderFirstName;
+		holderLastName = policyHolderObj.holderLastName;
+		holderAge = policyHolderObj.holderAge;
+		holderHeight = policyHolderObj.getHolderHeight();
+		holderWeight = policyHolderObj.getHolderWeight();
+		holderSmokingStatus = policyHolderObj.getHolderSmokingStatus();
+	}
+	
+
+
 	/**
 	 * 
 	 * Retrieves the age of policy holder
@@ -116,6 +127,16 @@ public class PolicyHolder {
 	 */
 	public void setHolderWeight(double holderWeight) {
 		this.holderWeight = holderWeight;
+	}
+
+	@Override
+	public String toString() {
+
+		return "***** PolicyHolder ****" + "\n this.holderFirstName= " + this.holderFirstName +
+				"\n this.holderLastName=" + this.holderLastName + "\n this.holderAge=" +
+				this.holderAge + "\n this.holderHeight=" + this.holderHeight +
+				"\n this.holderWeight = " + this.holderWeight + "\n this.holderSmokingStatus=" +
+				this.holderSmokingStatus;
 	}
 
 }
