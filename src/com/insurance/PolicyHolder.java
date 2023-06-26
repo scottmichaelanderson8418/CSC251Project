@@ -1,6 +1,10 @@
 package com.insurance;
 
 public class PolicyHolder {
+	/*
+	 * The PolicyHolder class will represent a person that is associated with an
+	 * insurance policy
+	 */
 
 	private String holderFirstName; // policy holder's First Name
 	private String holderLastName;// Policy Holder's Last Name
@@ -9,15 +13,44 @@ public class PolicyHolder {
 	private double holderWeight; // lbs
 	private String holderSmokingStatus;
 
-	public PolicyHolder(PolicyHolder policyHolderObj) {
-		holderFirstName = policyHolderObj.holderFirstName;
-		holderLastName = policyHolderObj.holderLastName;
-		holderAge = policyHolderObj.holderAge;
-		holderHeight = policyHolderObj.getHolderHeight();
-		holderWeight = policyHolderObj.getHolderWeight();
-		holderSmokingStatus = policyHolderObj.getHolderSmokingStatus();
+
+	
+	public PolicyHolder() {
+		
+		this.holderFirstName = "";
+		this.holderLastName = "";
+		this.holderAge = 0;
+		this.holderHeight = 0;
+		this.holderWeight = 0.0;
+		this.holderSmokingStatus = "";
 	}
 	
+	
+	public PolicyHolder(PolicyHolder obj) {
+		this.holderFirstName = obj.holderFirstName;
+		this.holderLastName = obj.holderLastName;
+		this.holderAge = obj.holderAge;
+		this.holderHeight = obj.holderHeight;
+		this.holderWeight = obj.holderWeight;
+		this.holderSmokingStatus = obj.holderSmokingStatus;
+	}
+	
+
+	public PolicyHolder(
+			String holderFirstName,
+			String holderLastName,
+			int holderAge,
+			double holderHeight,
+			double holderWeight,
+			String holderSmokingStatus) {
+		super();
+		this.holderFirstName = holderFirstName;
+		this.holderLastName = holderLastName;
+		this.holderAge = holderAge;
+		this.holderHeight = holderHeight;
+		this.holderWeight = holderWeight;
+		this.holderSmokingStatus = holderSmokingStatus;
+	}
 
 
 	/**
@@ -132,11 +165,14 @@ public class PolicyHolder {
 	@Override
 	public String toString() {
 
-		return "***** PolicyHolder ****" + "\n this.holderFirstName= " + this.holderFirstName +
+		String str = "";
+		str = "***** PolicyHolder ****" + "\n this.holderFirstName= " + this.holderFirstName +
 				"\n this.holderLastName=" + this.holderLastName + "\n this.holderAge=" +
 				this.holderAge + "\n this.holderHeight=" + this.holderHeight +
 				"\n this.holderWeight = " + this.holderWeight + "\n this.holderSmokingStatus=" +
 				this.holderSmokingStatus;
+
+		return str;
 	}
 
 }

@@ -28,7 +28,7 @@ public class Policy {
 	public Policy() {
 		this.policyNumber = 0;
 		this.providerName = "";
-		this.policyHolderObj = null;
+		this.policyHolderObj=null;
 
 	}
 
@@ -44,13 +44,24 @@ public class Policy {
 	 * @param policyNumber:        indicates the policy number of the insurance plan
 	 * @param holderSmokingStatus: indicates the policy holders smoking status
 	 */
-	// Policy constructor with fields
+	// Policy constructor with fields (Aggregation)
 	public Policy(int policyNumber, String providerName, PolicyHolder policyHolderObj) {
 		super();
 		this.policyNumber = policyNumber;
 		this.providerName = providerName;
+
 		this.policyHolderObj = new PolicyHolder(policyHolderObj);
 
+	}
+
+	// Modified for aggregation
+	public PolicyHolder getpolicyHolderObj() {
+		return new PolicyHolder(policyHolderObj);
+	}
+
+	// Modified for aggregation
+	public void setPolicyHolder(PolicyHolder policyHolderObj) {
+		this.policyHolderObj = new PolicyHolder(policyHolderObj);
 	}
 
 	/**
@@ -65,7 +76,7 @@ public class Policy {
 
 	// this will return a copy of my PolicyHolder Object
 	public PolicyHolder getPolicyHolderObj() {
-		return this.policyHolderObj;
+		return new PolicyHolder(policyHolderObj);
 	}
 
 	/**
@@ -90,8 +101,6 @@ public class Policy {
 
 		this.policyHolderObj = new PolicyHolder(policyHolderObj);
 	}
-	
-	
 
 	/**
 	 * Sets the policy number of the insurance plan
@@ -121,8 +130,12 @@ public class Policy {
 
 	public String toString() {
 
-		return "this.policyNumber = " + this.policyNumber + "this.providerName = " +
-				this.providerName + "this.policyHolderObj = " + this.policyHolderObj;
+		String str="";
+		
+		str= "this.policyNumber = " + this.policyNumber + "\n this.providerName = " +
+				this.providerName + "\n this.policyHolderObj = " + this.policyHolderObj;
+		
+		return str;
 
 	}
 

@@ -32,29 +32,35 @@ public class MainProject03 {
 	public static int numberSmokers = 0;
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-
 		// Scanner scanner = new Scanner(System.in);
-
 		// getInput(policy01, scanner);
 
+		// Use File class to create a new file called "PolicyInformation.txt"
 		File file = new File("PolicyInformation.txt");
 
+		// Print message about file creation status
 		if (file.createNewFile()) {
 			System.out.println("New File created");
 		} else {
 			System.out.println("No file created");
 		}
+
+		//
 		String k = "";
+
+		// Create an ArrayList of the policyStr objects
 		ArrayList<String> policyStr = new ArrayList<String>();
+
+		// Create an ArrayList of the policyList objects
 		ArrayList<Policy> policyList = new ArrayList<Policy>();
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			if ((k = br.readLine()) == null) {
-				System.out.println("Null file");
-
-			}
+			// Create FileReader object "fr"
+			FileReader fr = new FileReader(file);
+			// Use BufferedReader class to read one line at a time
+			// Create BufferedReader object "br"
+			// Send FileReader object "fr" into BufferedReader object
+			BufferedReader br = new BufferedReader(fr);
 
 			// while the String k = "something" then continue reading
 			while ((k = br.readLine()) != null) {
@@ -69,6 +75,7 @@ public class MainProject03 {
 					continue;
 				}
 
+				// if there is text on the line then add it to the ArrayList "policyStr"
 				policyStr.add(k);
 
 			}
@@ -79,29 +86,40 @@ public class MainProject03 {
 			e.printStackTrace();
 		}
 
-		// Create new policy object and Iterate through the policyStr ArrayList to give
-		// the Policy Object values
+		// Create new policy object and Iterate through the policyStr ArrayList
+		// Create a PolicyHolderObject using default constructor
+		// Create Policy object using default constructor
+
+		// 1. Fill the default Policy constructor without the "policyHolderObj"
+		// 2. Fill the default PolicyHolder Constructor with values
+		// 3. Create a Policy Object using the Policy Aggregation Constructor
+		// 4. Fill the Policy Aggregation Constructor with Policy Object and
+		// PolicyHolder Object
+
 		for (int kk = 0; kk < policyStr.size(); kk++) {
 
-			Policy policy = new Policy();
+			PolicyHolder policyHolderObj = new PolicyHolder();
 
-			// Use the captured information as needed
+			Policy policy = new Policy();
 
 			policy.setPolicyNumber(Integer.parseInt(policyStr.get(kk)));
 			kk += 1;
 
+			// System.out.println(policy.getPolicyNumber());
+
 			policy.setProviderName(policyStr.get(kk));
+
+			// System.out.println(policy.getProviderName());
 			kk += 1;
 
-			policy.getPolicyHolderObj().setHolderFirstName(policyStr.get(kk));
-			System.out.println("policy.getPolicyHolderObj().getHolderFirstName() = " +
-					policy.getPolicyHolderObj().getHolderFirstName());
+			policyHolderObj.setHolderFirstName(policyStr.get(kk));
+
 			kk += 1;
-			policy.getPolicyHolderObj().setHolderLastName(policyStr.get(kk));
+			policyHolderObj.setHolderLastName(policyStr.get(kk));
 			kk += 1;
-			policy.getPolicyHolderObj().setHolderAge(Integer.parseInt(policyStr.get(kk)));
+			policyHolderObj.setHolderAge(Integer.parseInt(policyStr.get(kk)));
 			kk += 1;
-			policy.getPolicyHolderObj().setHolderSmokingStatus(policyStr.get(kk));
+			policyHolderObj.setHolderSmokingStatus(policyStr.get(kk));
 
 			if (policyStr.get(kk).equals("smoker")) {
 
@@ -110,14 +128,25 @@ public class MainProject03 {
 			}
 			kk += 1;
 
-			policy.getPolicyHolderObj().setHolderHeight(Integer.parseInt(policyStr.get(kk)));
+			policyHolderObj.setHolderHeight(Integer.parseInt(policyStr.get(kk)));
 			kk += 1;
 
-			policy.getPolicyHolderObj().setHolderWeight(Integer.parseInt(policyStr.get(kk)));
+			policyHolderObj.setHolderWeight(Integer.parseInt(policyStr.get(kk)));
 
-			policyList.add(policy);
+			
+			
+			//Create Policy Aggregation Constructor and fill it with values
+			Policy policyAgg = new Policy(policy.getPolicyNumber(), policy.getProviderName(),
+					policyHolderObj);
+			
+
+			policyList.add(policyAgg);
 		}
+		
+		
+		
 
+	//Print out each object in the ArrayList "policyList"
 		for (int x = 0; x < policyList.size(); x++) {
 
 			System.out.print("Policy Number: ");
