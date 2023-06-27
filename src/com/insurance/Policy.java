@@ -1,5 +1,7 @@
 package com.insurance;
 
+
+
 public class Policy {
 	/**
 	 * The Policy Class contains the blueprints for the Policy Object The Policy
@@ -12,6 +14,9 @@ public class Policy {
 	 * 
 	 * 
 	 */
+
+
+
 	// Added code to Policy Class
 	private String providerName; // Provider Name
 
@@ -19,6 +24,8 @@ public class Policy {
 
 	private PolicyHolder policyHolderObj; // Field to represent an instance of the PolicyHolder
 											// class
+
+	private static int policyObjectCount;
 
 	/**
 	 * Default Policy constructor that initializes the fields with default values
@@ -28,8 +35,16 @@ public class Policy {
 	public Policy() {
 		this.policyNumber = 0;
 		this.providerName = "";
-		this.policyHolderObj=null;
+		this.policyHolderObj = null;
 
+	}
+
+	public static int getPolicyObjectCount() {
+		return policyObjectCount;
+	}
+
+	public static void setPolicyObjectCount(int policyObjectCount) {
+		Policy.policyObjectCount = policyObjectCount;
 	}
 
 	/**
@@ -49,8 +64,9 @@ public class Policy {
 		super();
 		this.policyNumber = policyNumber;
 		this.providerName = providerName;
-
 		this.policyHolderObj = new PolicyHolder(policyHolderObj);
+
+		policyObjectCount++;
 
 	}
 
@@ -64,17 +80,7 @@ public class Policy {
 		this.policyHolderObj = new PolicyHolder(policyHolderObj);
 	}
 
-	/**
-	 * bmiCalc() method will calculate the BMI (Body Mass Index)
-	 * 
-	 * @return the body mass index
-	 */
-	public double bmiCalc(double holderWeight, double holderHeight) {
-
-		return (holderWeight * 703) / (holderHeight * holderHeight);
-	}
-
-	// this will return a copy of my PolicyHolder Object
+	// this will return a deep copy of my PolicyHolder Object
 	public PolicyHolder getPolicyHolderObj() {
 		return new PolicyHolder(policyHolderObj);
 	}
@@ -117,25 +123,54 @@ public class Policy {
 	 * @param providerName the name of the insurance provider
 	 */
 	public void setProviderName(String providerName) {
-		this.providerName = providerName.toUpperCase();
+		this.providerName = providerName;
 	}
 
-	// @Override
-	// public String toString() {
-	// return "Policy [providerName=" + providerName + ", policyNumber=" +
-	// policyNumber +
-	// ", policyHolderObj=" + policyHolderObj + "]";
-	// }
-	//
+	/**
+	 * policyPriceCalc() method will return the policy price after considering the
+	 * age, smoking status, and BMI
+	 * 
+	 * @param policy01
+	 * @return returns the Policy Price
+	 */
+	public double policyPriceCalc() {
+
+		double policyPrice = 600.00d;
+
+		if (policyHolderObj.getHolderAge() > 50) {
+			policyPrice += 75.00;
+		}
+
+		if (policyHolderObj.getHolderSmokingStatus().equals("smoker")) {
+			policyPrice += 100;
+
+		}
+
+		if (this.bmiCalc(policyHolderObj.getHolderWeight(),
+				policyHolderObj.getHolderHeight()) > 35) {
+			policyPrice += (this.bmiCalc(policyHolderObj.getHolderWeight(),
+					policyHolderObj.getHolderHeight()) - 35) * 20;
+		}
+		return policyPrice;
+	}
+
+	/**
+	 * bmiCalc() method will calculate the BMI (Body Mass Index)
+	 * 
+	 * @return the body mass index
+	 */
+	public double bmiCalc(double holderWeight, double holderHeight) {
+
+		return (holderWeight * 703) / (holderHeight * holderHeight);
+	}
 
 	public String toString() {
 
-		String str="";
-		
-		str= "this.policyNumber = " + this.policyNumber + "\n this.providerName = " +
-				this.providerName + "\n this.policyHolderObj = " + this.policyHolderObj;
-		
-		return str;
+		return String.format(
+
+				"Policy Number: " + this.getPolicyNumber() + "\nProvider Name: " +
+						this.getProviderName() + this.policyHolderObj + "\nPolicy Price: $" +
+						DecimalFormatUtils.FF.format(this.policyPriceCalc()) + "\n");
 
 	}
 

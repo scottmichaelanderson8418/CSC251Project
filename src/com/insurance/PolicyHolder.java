@@ -13,10 +13,8 @@ public class PolicyHolder {
 	private double holderWeight; // lbs
 	private String holderSmokingStatus;
 
-
-	
 	public PolicyHolder() {
-		
+
 		this.holderFirstName = "";
 		this.holderLastName = "";
 		this.holderAge = 0;
@@ -24,8 +22,7 @@ public class PolicyHolder {
 		this.holderWeight = 0.0;
 		this.holderSmokingStatus = "";
 	}
-	
-	
+
 	public PolicyHolder(PolicyHolder obj) {
 		this.holderFirstName = obj.holderFirstName;
 		this.holderLastName = obj.holderLastName;
@@ -34,7 +31,6 @@ public class PolicyHolder {
 		this.holderWeight = obj.holderWeight;
 		this.holderSmokingStatus = obj.holderSmokingStatus;
 	}
-	
 
 	public PolicyHolder(
 			String holderFirstName,
@@ -51,7 +47,6 @@ public class PolicyHolder {
 		this.holderWeight = holderWeight;
 		this.holderSmokingStatus = holderSmokingStatus;
 	}
-
 
 	/**
 	 * 
@@ -123,7 +118,7 @@ public class PolicyHolder {
 	 * @param holderFirstName
 	 */
 	public void setHolderFirstName(String holderFirstName) {
-		this.holderFirstName = holderFirstName.toUpperCase();
+		this.holderFirstName = holderFirstName;
 	}
 
 	/**
@@ -141,7 +136,7 @@ public class PolicyHolder {
 	 * @param holderLastName Policy Holder's Last Name
 	 */
 	public void setHolderLastName(String holderLastName) {
-		this.holderLastName = holderLastName.toUpperCase();
+		this.holderLastName = holderLastName;
 	}
 
 	/**
@@ -162,17 +157,31 @@ public class PolicyHolder {
 		this.holderWeight = holderWeight;
 	}
 
+	/**
+	 * bmiCalc() method will calculate the BMI (Body Mass Index)
+	 * 
+	 * @return the body mass index
+	 */
+	public double bmiCalc(double holderWeight, double holderHeight) {
+
+		return (holderWeight * 703) / (holderHeight * holderHeight);
+	}
+
 	@Override
 	public String toString() {
 
-		String str = "";
-		str = "***** PolicyHolder ****" + "\n this.holderFirstName= " + this.holderFirstName +
-				"\n this.holderLastName=" + this.holderLastName + "\n this.holderAge=" +
-				this.holderAge + "\n this.holderHeight=" + this.holderHeight +
-				"\n this.holderWeight = " + this.holderWeight + "\n this.holderSmokingStatus=" +
-				this.holderSmokingStatus;
+		return String.format(
 
-		return str;
+				"\nPolicyholder's First Name: " + this.getHolderFirstName() +
+						"\nPolicyholder's Last Name: " + this.getHolderLastName() +
+						"\nPolicyholder's Age: " + this.getHolderAge() +
+						"\nPolicyholder's Smoking Status: " + this.getHolderSmokingStatus() +
+						"\nPolicyholder's Height: " + this.getHolderHeight() + " inches" +
+						"\nPolicyholder's Weight: " +
+						DecimalFormatUtils.F.format(this.getHolderWeight()) + " pounds" +
+
+						"\nPolicyholder's BMI: " + DecimalFormatUtils.FF
+								.format(bmiCalc(this.getHolderWeight(), this.getHolderHeight())));
 	}
 
 }
